@@ -76,7 +76,6 @@ public class UserServiceImpl implements UserService {
                 .map(Mapper::map)
                 .collect(toList());
     }
-
     @Override
     public Optional<ShoppingCartDto> addProductToCart(String userEmail, String productId, int count) {
         ProductEntity productEntity = productRepository.findProductEntityById(productId);
@@ -87,7 +86,6 @@ public class UserServiceImpl implements UserService {
         if (productEntity == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
         }
-
         ShoppingCartEntity shoppingCart = userEntity.getShoppingCart();
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCartEntity();
@@ -116,7 +114,7 @@ public class UserServiceImpl implements UserService {
         } else {
             poe.setCount(poe.getCount() + count);
         }
-        ShoppingCartDto dto = map(shoppingCart);
+        ShoppingCartDto dto = Mapper.map(shoppingCart);
         return Optional.of(dto);
     }
 
@@ -173,7 +171,7 @@ public class UserServiceImpl implements UserService {
     private UserEntity getUserEntity(String userEmail) {
         UserEntity userEntity = userRepository.findById(userEmail).orElse(null);
         if (userEntity == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User [" + userEmail + "] does not exist");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User [" + userEmail + "] does not have profile");
         }
         return userEntity;
     }

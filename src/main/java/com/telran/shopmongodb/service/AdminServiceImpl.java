@@ -100,6 +100,7 @@ public class AdminServiceImpl implements AdminService {
         UserEntity ue = userRepository.findById(userEmail).orElse(null);
         if (ue != null) {
             ue.setBalance(ue.getBalance().add(balance));
+            userRepository.save(ue);
             return true;
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user with email [" + userEmail + "] does not exist");
