@@ -1,0 +1,112 @@
+### Add categories START >>>>>>>>>>>>
+POST http://localhost:8080/admin/category
+Content-Type: application/json
+
+{"name": "Phone"}
+
+###
+
+POST http://localhost:8080/admin/category
+Content-Type: application/json
+
+{"name": "Leptop"}
+
+###
+
+POST http://localhost:8080/admin/category
+Content-Type: application/json
+
+{"name": "PC"}
+
+###
+
+POST http://localhost:8080/admin/category
+Content-Type: application/json
+
+{"name": "TV"}
+
+### Add categories END <<<<<<<<<<<<<<<<<<
+
+### Add products START >>>>>>>>>>>>>>>>>>
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"Samsumg S10+", "price": 3000.00,"category": {"id": "[category_id]"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"IPhone X", "price": 3500.00,"category": {"id": "[category_id]"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"Xiaomi A3", "price": 2700.00,"category": {"id": "[category_id]"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"MacBook Pro i9", "price": 8700.00,"category": {"id": "[category_id]"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"Lenovo x10", "price": 6570.00,"category": {"id": "c24b7f55-5d1e-4c51-9ff7-72de575015ba"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"iMac PRO", "price": 18350.00,"category": {"id": "[category_id]"}}
+
+###
+
+POST http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"name":"ABS Master-Pro Ryzen 5 2400G", "price": 13670.00,"category": {"id": "[category_id]"}}
+
+### Add products END <<<<<<<<<<<<<<<<<<<<<<<
+
+#Delete product by id
+DELETE http://localhost:8080/admin/product/75ab03c0-ae7b-4695-ac96-11a0361caefa
+###
+
+#Delete category by id
+DELETE http://localhost:8080/admin/category/b91a60b5-3287-454c-8183-0aab9ab35b05
+
+### Delete products END <<<<<<<<<<<<<<<<<<<<<<<
+
+#Update category by id, name
+
+PUT http://localhost:8080/admin/category
+Content-Type: application/json
+
+{ "id": "bd6eede5-1018-4f15-9a4a-35ecd6285e71","name": "Phone_3"}
+
+### Update products END <<<<<<<<<<<<<<<<<<<<<<<
+
+PUT http://localhost:8080/admin/product
+Content-Type: application/json
+
+{"id": "c804dd9f-a3d5-410e-9c6b-4b8f0a757072", "price": 11500.00}
+
+###
+PUT http://localhost:8080/admin/user
+Content-Type: application/json
+
+{
+  "email": "dima@mail.com",
+  "balance": 1000000.00
+}
+
+###

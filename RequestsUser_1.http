@@ -1,0 +1,45 @@
+### Registration
+POST http://localhost:8080/registration
+Content-Type: application/json
+
+{"email":"admin@mail.com","password":"admin"}
+
+### Add user profile
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{"email": "test2@mail.com","name": "test2","phone": "000000000"}
+
+###
+
+### GetUser Profile
+GET http://localhost:8080/user
+Authorization: Basic test@mail.com test
+
+###
+
+### Get all categories
+GET http://localhost:8080/categories
+
+###
+
+### Get all products
+GET http://localhost:8080/products
+
+###
+
+### Get products by category
+GET http://localhost:8080/products/7b5b74dd-b3bf-4712-822d-deeec17994f8
+
+### Add Product to cart
+POST http://localhost:8080/cart/vasya@mail.com
+Content-Type: application/json
+
+{"productId":"130d7cc9-c5e9-4c1b-8caf-bc432aee4cc0","count":10}
+
+###
+
+### Get User Shopping cart
+GET http://localhost:8080/cart/vasya@mail.com
+
+###
