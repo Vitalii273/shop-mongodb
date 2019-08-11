@@ -23,6 +23,6 @@ public class ProductOrderEntity {
     private int count;
     private Double price;
     private CategoryEntity category;
-    private ShoppingCartEntity shoppingCart;
-    private OrderEntity order;
+    private ObjectId shoppingCart;
+    private ObjectId order;
 }

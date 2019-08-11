@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -19,8 +20,8 @@ import java.util.List;
 public class OrderEntity {
     @Id
     private ObjectId id;
-    private Timestamp date;
+    private LocalDateTime date;
     private OrderStatus status;
     private UserEntity owner;
-    private List<ProductOrderEntity> products;
+    private List<ObjectId> products;
 }

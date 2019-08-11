@@ -17,5 +17,5 @@ public class CategoryEntity {
     @Id
     private ObjectId id;
     private String name;
-    private List<ProductEntity> products;
+    private List<ObjectId> products;
 }

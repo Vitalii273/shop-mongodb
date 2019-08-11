@@ -22,8 +22,8 @@ public class UserEntity {
     private String name;
     private String phone;
     private BigDecimal balance;
-    private ShoppingCartEntity shoppingCart;
-    private List<OrderEntity> orders;
+    private ObjectId shoppingCart;
+    private List<ObjectId> orders;
     private UserDetailsEntity userDetailsEntity;
 
 }

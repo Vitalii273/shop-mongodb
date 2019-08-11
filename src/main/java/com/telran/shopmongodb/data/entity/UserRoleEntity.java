@@ -17,5 +17,5 @@ import java.util.List;
 public class UserRoleEntity {
     @Id
     private String role;
-    private List<UserDetailsEntity> users;
+    private List<ObjectId> users_details;
 }

@@ -28,6 +28,8 @@ public class AdminServiceImpl implements AdminService {
     ShoppingCartRepository shoppingCartRepository;
     @Autowired
     ProductOrderEntityRepository productOrderEntityRepository;
+    @Autowired
+    Mapper mapper;
 
 
     @Override
@@ -80,6 +82,7 @@ public class AdminServiceImpl implements AdminService {
         CategoryEntity ce = categoryRepository.findById(categoryId).orElse(null);
         if (ce != null) {
             ce.setName(categoryName);
+            categoryRepository.save(ce);
             return true;
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "category with id [" + categoryId + "] does not exist");
@@ -90,6 +93,7 @@ public class AdminServiceImpl implements AdminService {
         ProductEntity pe = productRepository.findProductEntityById(productId);
         if (pe != null) {
             pe.setPrice(price.doubleValue());
+            productRepository.save(pe);
             return true;
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "product with id [" + productId + "] does not exist");

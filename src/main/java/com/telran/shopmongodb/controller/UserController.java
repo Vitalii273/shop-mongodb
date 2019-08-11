@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("cart")
-    @ApiOperation(value = "Get shopping cart by Id")
+    @ApiOperation(value = "Get shopping cart")
     public ShoppingCartDto getShoppingCart(Principal principal) {
         return service.getShoppingCart(principal.getName())
                 .orElseThrow();
