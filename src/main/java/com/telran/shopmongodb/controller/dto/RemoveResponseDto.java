@@ -1,7 +1,6 @@
 package com.telran.shopmongodb.controller.dto;
 
 import lombok.*;
-import org.bson.types.ObjectId;
 
 @NoArgsConstructor
 @AllArgsConstructor

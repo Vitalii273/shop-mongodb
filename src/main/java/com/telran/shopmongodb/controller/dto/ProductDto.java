@@ -1,9 +1,6 @@
 package com.telran.shopmongodb.controller.dto;
 
 import lombok.*;
-import org.bson.types.ObjectId;
-
-import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
