@@ -55,13 +55,14 @@ public class AdminController {
     @PutMapping("product")
     @ApiOperation(value = "Change product price, only for admin account")
     public PriceResponseDto changeProductPrice(@RequestBody ProductDto productDto){
-        service.changeProductPrice(productDto.getId(),productDto.getPrice().doubleValue());
+        service.changeProductPrice(productDto.getId(),productDto.getPrice());
         return PriceResponseDto.builder().id(productDto.getId()).price(productDto.getPrice()).build();
     }
     @PutMapping("user")
     @ApiOperation(value = "Add user balance, only for admin account")
     public AddUserBalanceResponseDto addBalance(@RequestBody UserDto userDto){
-        service.addBalance(userDto.getEmail(),userDto.getBalance().doubleValue());
-        return AddUserBalanceResponseDto.builder().email(userDto.getEmail()).balance(userDto.getBalance()).build();
+        service.addBalance(userDto.getEmail(),userDto.getBalance());
+        return AddUserBalanceResponseDto.builder().email(userDto.getEmail())
+                .balance(userDto.getBalance()).build();
     }
 }
