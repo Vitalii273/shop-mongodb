@@ -12,5 +12,5 @@ import java.math.BigDecimal;
 @Builder
 public class AddUserBalanceResponseDto {
     String email;
-    BigDecimal balance;
+    Double balance;
 }

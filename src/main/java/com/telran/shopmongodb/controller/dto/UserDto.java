@@ -14,5 +14,5 @@ public class UserDto {
     private String email;
     private String name;
     private String phone;
-    private BigDecimal balance;
+    private Double balance;
 }

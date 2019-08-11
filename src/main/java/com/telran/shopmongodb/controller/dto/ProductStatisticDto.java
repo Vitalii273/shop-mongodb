@@ -13,5 +13,5 @@ public class ProductStatisticDto {
     private String productName;
     private String productCategory;
     private int numberOfPurchases;
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 }

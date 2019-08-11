@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserDto> addUserInfo(String email, String name, String phone) {
         if (!userRepository.existsById(email)) {
-            UserEntity entity = new UserEntity(email, name, phone, BigDecimal.ZERO, null, null, null);
+            UserEntity entity = new UserEntity(email, name, phone, 0.0, null, null, null);
             userRepository.save(entity);
             return Optional.of(mapper.map(entity));
         }

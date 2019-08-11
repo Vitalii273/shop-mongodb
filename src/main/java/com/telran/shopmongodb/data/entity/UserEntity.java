@@ -21,7 +21,7 @@ public class UserEntity {
     private String email;
     private String name;
     private String phone;
-    private BigDecimal balance;
+    private Double balance;
     private ObjectId shoppingCart;
     private List<ObjectId> orders;
     private UserDetailsEntity userDetailsEntity;

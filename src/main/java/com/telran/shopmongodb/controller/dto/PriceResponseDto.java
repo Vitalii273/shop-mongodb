@@ -13,5 +13,5 @@ import java.math.BigDecimal;
 @Builder
 public class PriceResponseDto {
     String id;
-    BigDecimal price;
+    Double price;
 }

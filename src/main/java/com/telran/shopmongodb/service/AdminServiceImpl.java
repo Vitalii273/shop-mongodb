@@ -44,7 +44,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public String addProduct(String productName, BigDecimal price, String categoryId) {
+    public String addProduct(String productName, Double price, String categoryId) {
         CategoryEntity ce = categoryRepository.findById(categoryId).orElse(null);
         if (ce == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category with categoryId " + categoryId + " does not exist");
@@ -89,7 +89,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean changeProductPrice(String productId, BigDecimal price) {
+    public boolean changeProductPrice(String productId, Double price) {
         ProductEntity pe = productRepository.findProductEntityById(productId);
         if (pe != null) {
             pe.setPrice(price.doubleValue());
@@ -100,10 +100,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean addBalance(String userEmail, BigDecimal balance) {
+    public boolean addBalance(String userEmail, Double balance) {
         UserEntity ue = userRepository.findById(userEmail).orElse(null);
         if (ue != null) {
-            ue.setBalance(ue.getBalance().add(balance));
+            ue.setBalance(ue.getBalance()+balance);
             userRepository.save(ue);
             return true;
         }

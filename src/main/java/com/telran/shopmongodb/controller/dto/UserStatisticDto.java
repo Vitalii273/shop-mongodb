@@ -14,5 +14,5 @@ public class UserStatisticDto {
     private String userEmail;
     private List<ProductOrderDto> products;
     private int totalProductsCount;
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 }

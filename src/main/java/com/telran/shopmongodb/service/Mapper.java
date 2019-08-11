@@ -33,7 +33,7 @@ public class Mapper {
                 .category(map(entity.getCategory()))
                 .name(entity.getName())
                 .id(entity.getId().toHexString())
-                .price(new BigDecimal(entity.getPrice()))
+                .price(entity.getPrice())
                 .build();
     }
 
@@ -63,7 +63,7 @@ public class Mapper {
                 .product(ProductDto.builder()
                         .id(entity.getProductId().toHexString())
                         .name(entity.getName())
-                        .price(BigDecimal.valueOf(entity.getPrice()))
+                        .price(entity.getPrice())
                         .category(map(entity.getCategory()))
                         .build())
                 .count(entity.getCount())
