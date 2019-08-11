@@ -1,5 +1,6 @@
 package com.telran.shopmongodb.service;
 
+import com.telran.shopmongodb.controller.dto.AddUserBalanceResponseDto;
 import com.telran.shopmongodb.data.*;
 import com.telran.shopmongodb.data.entity.CategoryEntity;
 import com.telran.shopmongodb.data.entity.ProductEntity;
@@ -11,7 +12,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
 @Service
 @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -100,12 +101,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean addBalance(String userEmail, Double balance) {
+    public Optional<AddUserBalanceResponseDto> addBalance(String userEmail, Double balance) {
         UserEntity ue = userRepository.findById(userEmail).orElse(null);
         if (ue != null) {
             ue.setBalance(ue.getBalance()+balance);
             userRepository.save(ue);
-            return true;
+            AddUserBalanceResponseDto dto = mapper.mapBalance(ue);
+            return Optional.of(dto);
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user with email [" + userEmail + "] does not exist");
     }

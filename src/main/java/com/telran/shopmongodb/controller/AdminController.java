@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("admin")
 public class AdminController {
@@ -60,9 +62,7 @@ public class AdminController {
     }
     @PutMapping("user")
     @ApiOperation(value = "Add user balance, only for admin account")
-    public AddUserBalanceResponseDto addBalance(@RequestBody UserDto userDto){
-        service.addBalance(userDto.getEmail(),userDto.getBalance());
-        return AddUserBalanceResponseDto.builder().email(userDto.getEmail())
-                .balance(userDto.getBalance()).build();
+    public Optional<AddUserBalanceResponseDto> addBalance(@RequestBody UserDto userDto){
+        return service.addBalance(userDto.getEmail(),userDto.getBalance());
     }
 }

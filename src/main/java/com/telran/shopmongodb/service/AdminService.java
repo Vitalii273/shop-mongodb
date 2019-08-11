@@ -1,11 +1,8 @@
 package com.telran.shopmongodb.service;
 
-import com.mongodb.client.MongoCollection;
-import com.telran.shopmongodb.data.entity.OrderEntity;
+import com.telran.shopmongodb.controller.dto.AddUserBalanceResponseDto;
 
-import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
+import java.util.Optional;
 
 public interface AdminService {
     String addCategory(String categoryName);
@@ -14,5 +11,5 @@ public interface AdminService {
 //    boolean removeCategory(String categoryId);
     boolean updateCategory(String categoryId, String categoryName);
     boolean changeProductPrice(String productId, Double price);
-    boolean addBalance(String userEmail, Double balance);
+    Optional<AddUserBalanceResponseDto> addBalance(String userEmail, Double balance);
 }

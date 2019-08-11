@@ -85,4 +85,11 @@ public class Mapper {
                 .status(entity.getStatus().name())
                 .build();
     }
+
+    public AddUserBalanceResponseDto mapBalance(UserEntity entity){
+        return AddUserBalanceResponseDto.builder()
+                .email(entity.getEmail())
+                .balance(entity.getBalance())
+                .build();
+    }
 }
