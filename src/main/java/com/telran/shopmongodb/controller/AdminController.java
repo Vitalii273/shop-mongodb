@@ -9,10 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("admin")
@@ -76,6 +73,11 @@ public class AdminController {
     @GetMapping("stat")
     public List<OrderStatistic> getStat(){
         return service.getStat();
+    }
+
+    @GetMapping("statCount")
+    public List<Map> getStatCount(){
+        return service.getCount();
     }
 }
 

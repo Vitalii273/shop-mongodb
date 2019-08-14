@@ -9,10 +9,10 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 public class OrderProductStatisticImpl implements OrderProductStatistic {
     @Autowired
@@ -30,4 +30,17 @@ public class OrderProductStatisticImpl implements OrderProductStatistic {
         AggregationResults<OrderStatistic> results = template.aggregate(aggregation, "product_order", OrderStatistic.class);
         return results.getMappedResults();
     }
+
+    @Override
+    public List<Map> getCount() {
+        return template.aggregate(
+                newAggregation(
+                        group("name").count().as("count").first("count").as("count")
+                        .sum("price").as("totalPrice")
+                ),
+                "product_order",
+                Map.class
+        ).getMappedResults();
+    }
 }
+

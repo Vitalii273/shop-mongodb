@@ -4,6 +4,7 @@ import com.telran.shopmongodb.controller.dto.AddUserBalanceResponseDto;
 import com.telran.shopmongodb.data.entity.OrderStatistic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface AdminService {
@@ -14,5 +15,7 @@ public interface AdminService {
     boolean updateCategory(String categoryId, String categoryName);
     boolean changeProductPrice(String productId, Double price);
     Optional<AddUserBalanceResponseDto> addBalance(String userEmail, Double balance);
-    public List<OrderStatistic> getStat();
+    List<OrderStatistic> getStat();
+    List<Map> getCount();
+
 }

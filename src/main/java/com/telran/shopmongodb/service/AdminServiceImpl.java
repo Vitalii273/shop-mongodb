@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -117,6 +118,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<OrderStatistic> getStat() {
         return productOrderEntityRepository.getStat();
+    }
+
+    @Override
+    public List<Map> getCount() {
+        return productOrderEntityRepository.getCount();
     }
 
 }
