@@ -133,6 +133,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(userEntity);
         } else {
             poe.setCount(poe.getCount() + count);
+            poe.setPrice(poe.getPrice() + productEntity.getPrice());
             productOrderEntityRepository.save(poe);
         }
         ShoppingCartDto dto = mapper.map(shoppingCart);
@@ -152,7 +153,7 @@ public class UserServiceImpl implements UserService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "products not found");
         } else {
             poe.setCount(poe.getCount() - count);
-            if(poe.getCount()< 0){
+            if (poe.getCount() < 0) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "basket is empty");
             }
             productOrderEntityRepository.save(poe);

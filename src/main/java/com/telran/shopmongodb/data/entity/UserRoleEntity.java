@@ -18,4 +18,5 @@ public class UserRoleEntity {
     @Id
     private String role;
     private List<ObjectId> users_details;
+
 }

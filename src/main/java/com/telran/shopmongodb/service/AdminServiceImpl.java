@@ -3,6 +3,7 @@ package com.telran.shopmongodb.service;
 import com.telran.shopmongodb.controller.dto.AddUserBalanceResponseDto;
 import com.telran.shopmongodb.data.*;
 import com.telran.shopmongodb.data.entity.CategoryEntity;
+import com.telran.shopmongodb.data.entity.OrderStatistic;
 import com.telran.shopmongodb.data.entity.ProductEntity;
 import com.telran.shopmongodb.data.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -111,4 +113,10 @@ public class AdminServiceImpl implements AdminService {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user with email [" + userEmail + "] does not exist");
     }
+
+    @Override
+    public List<OrderStatistic> getStat() {
+        return productOrderEntityRepository.getStat();
+    }
+
 }
