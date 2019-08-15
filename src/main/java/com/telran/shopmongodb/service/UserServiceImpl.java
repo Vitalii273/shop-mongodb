@@ -145,7 +145,7 @@ public class UserServiceImpl implements UserService {
     public Optional<ShoppingCartDto> removeProductFromCart(String userEmail, String productId, int count) {
         UserEntity userEntity = getUserEntity(userEmail);
         ShoppingCartEntity shoppingCart = shoppingCartRepository.findById(userEntity.getShoppingCart().toHexString()).orElseThrow();
-
+        ProductEntity productEntity = productRepository.findProductEntityById(productId);
         val list = shoppingCart.getProducts();
 
         ProductOrderEntity poe = getProductOrderEntity(productId, list);
@@ -153,6 +153,7 @@ public class UserServiceImpl implements UserService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "products not found");
         } else {
             poe.setCount(poe.getCount() - count);
+            poe.setPrice(poe.getPrice() - productEntity.getPrice());
             if (poe.getCount() < 0) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "basket is empty");
             }

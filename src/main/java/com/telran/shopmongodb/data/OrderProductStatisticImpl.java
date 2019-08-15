@@ -3,6 +3,7 @@ package com.telran.shopmongodb.data;
 import com.telran.shopmongodb.data.entity.OrderStatistic;
 import com.telran.shopmongodb.data.entity.ProductOrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -24,7 +25,7 @@ public class OrderProductStatisticImpl implements OrderProductStatistic {
                 group("category")
                         .sum("price").as("totalPrice")
                         .sum("count").as("totalCount")
-                        .addToSet("name").as("productName"),
+                .addToSet("name").as("productName"),sort(Sort.Direction.DESC,"totalCount"),
                 project("totalCount","totalPrice", "productName")
         );
         AggregationResults<OrderStatistic> results = template.aggregate(aggregation, "product_order", OrderStatistic.class);
