@@ -154,10 +154,10 @@ public class UserServiceImpl implements UserService {
         } else {
             poe.setCount(poe.getCount() - count);
             poe.setPrice(poe.getPrice() - productEntity.getPrice());
-            if (poe.getCount() < 0) {
+            productOrderEntityRepository.save(poe);
+            if (poe.getCount() <= 0) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "basket is empty");
             }
-            productOrderEntityRepository.save(poe);
         }
         ShoppingCartDto dto = mapper.map(shoppingCart);
         return Optional.of(dto);
